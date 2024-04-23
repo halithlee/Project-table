@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,td,tr{
+            border: 1px solid black;
+            padding: 1rem;
+        }
+    </style>
+    
+</head>
+<body>
+   
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Roll_NO</th>
+            <th colspan="5">Marks</th>
+            <th colspan="2">Action</th>
+        </tr>
+        {%for details in data%}
+        <tr>
+            <td>{{details.Name}}</td>
+            <td>{{details.Age}}</td>
+            <td>{{details.Roll_NO}}</td>
+            {%for mark in details.Marks%}
+            <td>{{mark}}</td>
+            {%endfor%}
+            <td><a href="{{url_for('edit',id=loop.index)}}">Edit</a></td>
+            <td><a href="{{url_for('delete',id=loop.index)}}">Delete</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+</body>
+</html>
